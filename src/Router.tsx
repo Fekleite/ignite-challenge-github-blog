@@ -1,6 +1,6 @@
 import { Route, Routes } from 'react-router-dom'
 
-import { Blog } from './pages/blog'
+import { Blog } from './pages/Blog'
 
 export function Router() {
   return (
