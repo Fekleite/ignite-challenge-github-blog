@@ -1,5 +1,3 @@
 export function Blog() {
-  return (
-    <div>Blog</div>
-  )
+  return <div>Blog</div>
 }
