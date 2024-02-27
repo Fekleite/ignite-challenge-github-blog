@@ -1,7 +1,8 @@
 import { Header } from "../../components/Header";
+import { PostCard } from "../../components/PostCard";
 import { Profile } from "../../components/Profile";
 
-import { Container, TitleGroup } from "./styles";
+import { Container, TitleGroup, PostList } from "./styles";
 
 export function Blog() {
   return (
@@ -20,6 +21,14 @@ export function Blog() {
           <form>
             <input type="text" name="search" placeholder="Buscar conteúdo" />
           </form>
+
+          <PostList>
+            <PostCard />
+            <PostCard />
+            <PostCard />
+            <PostCard />
+            <PostCard />
+          </PostList>
         </main>
       </Container>
     </div>

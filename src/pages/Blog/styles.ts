@@ -8,7 +8,7 @@ export const Container = styled.div`
   margin: 0 auto;
 
   main {
-    margin-top: 4.5rem;
+    margin: 4.5rem 0;
 
     form {
       input {
@@ -48,4 +48,12 @@ export const TitleGroup = styled.div`
 
     font-size: 0.875rem;
   }
+`;
+
+export const PostList = styled.div`
+  margin-top: 3rem;
+
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
 `;
