@@ -1,4 +1,7 @@
-import { FaArrowUpRightFromSquare, FaGithub, FaBuilding, FaUserGroup } from 'react-icons/fa6'
+import { FaGithub, FaBuilding, FaUserGroup } from 'react-icons/fa6'
+
+import { ExternalLink } from '../ExternalLink'
+
 import { ProfileContainer, ProfileInfo, ProfileResume } from './styles'
 
 export function Profile() {
@@ -10,11 +13,7 @@ export function Profile() {
         <header>
           <span>Cameron Williamson</span>
 
-          <a href="http://" target="_blank" rel="noopener noreferrer">
-            GITHUB
-
-            <FaArrowUpRightFromSquare />
-          </a>
+          <ExternalLink url="https://github.com" text="github" />
         </header>
 
         <p>Tristique volutpat pulvinar vel massa, pellentesque egestas. Eu viverra massa quam dignissim aenean malesuada suscipit. Nunc, volutpat pulvinar vel mass.</p>

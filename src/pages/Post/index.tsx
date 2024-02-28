@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom";
+import { FaCalendarDay, FaChevronLeft, FaComment, FaGithub } from "react-icons/fa6";
+
 import { Header } from "../../components/Header";
-import { FaArrowUpRightFromSquare, FaCalendarDay, FaChevronLeft, FaComment, FaGithub } from "react-icons/fa6";
+import { ExternalLink } from "../../components/ExternalLink";
+
 import { Container, PostInfo, PostResume, Content } from "./styles";
 
 export function Post() {
@@ -17,11 +20,7 @@ export function Post() {
               VOLTAR
             </Link>
 
-            <a href="http://" target="_blank" rel="noopener noreferrer">
-              VER NO GITHUB
-
-              <FaArrowUpRightFromSquare />
-            </a>
+            <ExternalLink url="https://github.com" text="ver no github" />
           </header>
 
           <h1>JavaScript data types and data structures</h1>
