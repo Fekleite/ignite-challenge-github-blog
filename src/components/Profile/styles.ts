@@ -12,6 +12,13 @@ export const ProfileContainer = styled.div`
   align-items: center;
   justify-content: space-between;
   gap: 2rem;
+
+  & > img {
+    max-width: 9.25rem;
+    max-height: 9.25rem;
+
+    border-radius: 8px;
+  }
 `
 
 export const ProfileInfo = styled.div`
