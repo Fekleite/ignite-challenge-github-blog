@@ -54,6 +54,6 @@ export const PostList = styled.div`
   margin-top: 3rem;
 
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: 2rem;
 `;
