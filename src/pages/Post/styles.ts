@@ -70,4 +70,53 @@ export const PostResume = styled.div`
 
 export const Content = styled.main`
   padding: 2.5rem 2rem;
+
+  p {
+    line-height: 160%;
+
+    margin-bottom: 1.5rem;
+  }
+
+  h2 {
+    color: ${props => props.theme["base-subtitle"]};
+    font-size: 1.25rem;
+
+    margin-bottom: 0.5rem;
+  }
+
+  h3 {
+    color: ${props => props.theme["base-subtitle"]};
+    font-size: 1.125rem;
+
+    margin-bottom: 0.5rem;
+  }
+
+  a {
+    color: ${props => props.theme.blue};
+  }
+
+  ul, ol {
+    padding-left: 2rem;
+    margin-bottom: 1.5rem;
+
+    li + li {
+      margin-top: 0.5rem;
+    }
+
+    li {
+      pre {
+        margin-top: 0.5rem;
+      }
+    }
+  }
+
+  pre {
+    background-color: ${props => props.theme["base-post"]};
+
+    border-radius: 2px;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+
+    white-space: break-spaces;
+  }
 `;
