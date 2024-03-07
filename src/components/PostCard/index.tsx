@@ -6,19 +6,20 @@ import { CardContainer, PostBody } from "./styles";
 
 interface PostProps {
   id: number,
+  number: number,
   title: string,
   body: string,
   created_at: string,
 }
 
-export function PostCard({ id, title, body, created_at }: PostProps) {
+export function PostCard({ number, title, body, created_at }: PostProps) {
   const formattedDate = formatDistanceToNow(new Date(created_at), {
     addSuffix: true,
     locale: ptBR
   })
 
   return (
-    <CardContainer to={`/post/${id}`}>
+    <CardContainer to={`/post/${number}`}>
       <header>
         <h1>{title}</h1>
 

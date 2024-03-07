@@ -11,6 +11,7 @@ interface IssueState {
   total_count: number,
   items: Array<{
     id: number,
+    number: number,
     title: string,
     body: string,
     created_at: string,
