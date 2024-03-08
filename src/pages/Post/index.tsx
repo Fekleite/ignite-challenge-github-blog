@@ -1,7 +1,5 @@
 import { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
-import { formatDistanceToNow } from "date-fns";
-import { ptBR } from "date-fns/locale";
 import Markdown from "react-markdown";
 import { useContextSelector } from "use-context-selector";
 import { FaCalendarDay, FaChevronLeft, FaComment, FaGithub } from "react-icons/fa6";
@@ -12,6 +10,7 @@ import { ExternalLink } from "../../components/ExternalLink";
 import { Container, PostInfo, PostResume, Content } from "./styles";
 
 import { IssuesContext } from "../../contexts/IssuesContext";
+import { dateFormatter } from "../../utils/formatter";
 
 export function Post() {
   const { post, getPost } = useContextSelector(IssuesContext, (context) => {
@@ -22,11 +21,6 @@ export function Post() {
   })
 
   const { postId } = useParams()
-
-  const formattedDate = post?.created_at && formatDistanceToNow(new Date(post.created_at), {
-    addSuffix: true,
-    locale: ptBR
-  })
 
   useEffect(() => {
     if (postId) {
@@ -60,7 +54,7 @@ export function Post() {
 
             <div>
               <FaCalendarDay />
-              <span>{formattedDate}</span>
+              <span>{post?.created_at && dateFormatter(post.created_at)}</span>
             </div>
 
             <div>

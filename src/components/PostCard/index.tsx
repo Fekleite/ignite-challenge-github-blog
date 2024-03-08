@@ -1,8 +1,7 @@
-import { formatDistanceToNow } from "date-fns";
-import { ptBR } from "date-fns/locale";
 import Markdown from "react-markdown";
 
 import { CardContainer, PostBody } from "./styles";
+import { dateFormatter } from "../../utils/formatter";
 
 interface PostProps {
   id: number,
@@ -13,17 +12,12 @@ interface PostProps {
 }
 
 export function PostCard({ number, title, body, created_at }: PostProps) {
-  const formattedDate = formatDistanceToNow(new Date(created_at), {
-    addSuffix: true,
-    locale: ptBR
-  })
-
   return (
     <CardContainer to={`/post/${number}`}>
       <header>
         <h1>{title}</h1>
 
-        <span>{formattedDate}</span>
+        <span>{dateFormatter(created_at)}</span>
       </header>
 
       <PostBody>
