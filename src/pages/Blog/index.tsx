@@ -1,43 +1,24 @@
-import { ChangeEvent, useEffect, useState } from "react";
+import { ChangeEvent } from "react";
 
 import { Header } from "../../components/Header";
 import { PostCard } from "../../components/PostCard";
 import { Profile } from "../../components/Profile";
 
 import { Container, TitleGroup, PostList } from "./styles";
-import { api } from "../../services/axios";
+import { useContextSelector } from "use-context-selector";
+import { IssuesContext } from "../../contexts/IssuesContext";
 
-interface IssueState {
-  total_count: number,
-  items: Array<{
-    id: number,
-    number: number,
-    title: string,
-    body: string,
-    created_at: string,
-  }>
-}
 
 export function Blog() {
-  const [searchText, setSearchText] = useState('')
-  const [issues, setIssues] = useState<IssueState>({} as IssueState)
+  const { issues, searchIssues } = useContextSelector(IssuesContext, (context) => {
+    return {
+      issues: context.issues,
+      searchIssues: context.searchIssues
+    }
+  })
 
-  async function searchIssue() {
-    const { data } = await api.get<IssueState>(`/search/issues`, {
-      params: {
-        q: ` ${searchText} repo:Fekleite/ignite-challenge-github-blog`
-      },
-    })
-
-    setIssues(data)
-  }
-
-  useEffect(() => {
-    searchIssue()
-  }, [searchText]);
-
-  function handleOnChangeInput(event: ChangeEvent<HTMLInputElement>) {
-    setSearchText(event.target.value);
+  async function handleOnChangeInput(event: ChangeEvent<HTMLInputElement>) {
+    searchIssues(event.target.value);
   }
 
   return (
@@ -50,7 +31,7 @@ export function Blog() {
         <main>
           <TitleGroup>
             <h2>Publicações</h2>
-            <span>{issues.total_count || 0} publicações</span>
+            <span>{issues.length} publicações</span>
           </TitleGroup>
 
           <form>
@@ -58,7 +39,7 @@ export function Blog() {
           </form>
 
           <PostList>
-            {issues?.items?.map(issue => (
+            {issues?.map(issue => (
               <PostCard
                 key={issue.id}
                 {...issue}
