@@ -1,11 +1,11 @@
 import { ChangeEvent } from "react";
+import { useContextSelector } from "use-context-selector";
 
 import { Header } from "../../components/Header";
 import { PostCard } from "../../components/PostCard";
 import { Profile } from "../../components/Profile";
 
 import { Container, TitleGroup, PostList } from "./styles";
-import { useContextSelector } from "use-context-selector";
 import { IssuesContext } from "../../contexts/IssuesContext";
 
 
