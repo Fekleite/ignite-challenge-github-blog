@@ -1,5 +1,3 @@
-import Markdown from "react-markdown";
-
 import { CardContainer, PostBody } from "./styles";
 import { dateFormatter } from "../../utils/formatter";
 
@@ -21,7 +19,7 @@ export function PostCard({ number, title, body, created_at }: PostProps) {
       </header>
 
       <PostBody>
-        <Markdown>{body}</Markdown>
+        {body}
       </PostBody>
     </CardContainer>
   )
