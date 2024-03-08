@@ -8,6 +8,11 @@ interface Issue {
   title: string,
   body: string,
   created_at: string,
+  html_url: string
+  user: {
+    login: string
+  },
+  comments: number
 }
 
 interface Search {
@@ -17,6 +22,8 @@ interface Search {
 interface IssuesContextType {
   issues: Issue[]
   searchIssues: (query?: string) => Promise<void>
+  post: Issue
+  getPost: (postId: string) => Promise<void>
 }
 
 interface IssuesProviderProps {
@@ -27,6 +34,7 @@ export const IssuesContext = createContext({} as IssuesContextType)
 
 export function IssuesProvider({ children }: IssuesProviderProps) {
   const [issues, setIssues] = useState<Issue[]>([])
+  const [post, setPost] = useState<Issue>({} as Issue)
 
   const searchIssues = useCallback(async (query?: string) => {
     const { data } = await api.get<Search>(`/search/issues`, {
@@ -38,6 +46,12 @@ export function IssuesProvider({ children }: IssuesProviderProps) {
     setIssues(data.items)
   }, [])
 
+  const getPost = useCallback(async (postId: string) => {
+    const { data } = await api.get<Issue>(`/repos/Fekleite/ignite-challenge-github-blog/issues/${postId}`)
+
+    setPost(data)
+  }, [])
+
   useEffect(() => {
     searchIssues('')
   }, [searchIssues]);
@@ -46,7 +60,9 @@ export function IssuesProvider({ children }: IssuesProviderProps) {
     <IssuesContext.Provider
       value={{
         issues,
-        searchIssues
+        searchIssues,
+        post,
+        getPost
       }}
     >
       {children}
